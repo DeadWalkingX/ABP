@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ListadoContratos.xaml.cs" />
+    <Compile Include="RegistrarCliente.cs" />
     <Compile Include="VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
@@ -74,6 +75,10 @@
       <DependentUpon>Contratos.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RegistrarCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="VentanaPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +125,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ClientAdd.png" />
+    <Resource Include="Imagenes\ClientDelete.png" />
+    <Resource Include="Imagenes\ClientSearch.png" />
+    <Resource Include="Imagenes\ClientUpdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Belife\Belife.csproj">
+      <Project>{94066470-44f4-4e6c-9cad-e143dff3f7c4}</Project>
+      <Name>Belife</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,7 +21,7 @@ namespace Belife
         }
 
 
-        private double CalcularPrima()
+        public double CalcularPrima()
         {
             double prima = 0;
 
