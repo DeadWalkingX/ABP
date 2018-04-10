@@ -13,8 +13,8 @@ namespace Belife
         public string Rut { get; set; }
         public string Apellidos { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public eeSexo Sexo { get; set; }
-        public eeEstadoCivil EstadoCivil { get; set; }
+        public Sexo Sexo { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
 
 
 
@@ -30,8 +30,8 @@ namespace Belife
             this.Rut = string.Empty;
             this.Apellidos = string.Empty;
             this.FechaNacimiento = DateTime.Now;
-            this.Sexo = (eeSexo)0;
-            this.EstadoCivil = (eeEstadoCivil)0;
+            this.Sexo = new Sexo();
+            this.EstadoCivil = new EstadoCivil();
         }
 
         public void Create()
