@@ -26,7 +26,7 @@ namespace Belife
         /// </summary>
         /// <param name="ValorBase"> Valor base del plan para obtener el valor total de la prima </param>
         /// <returns> valor de la prima </returns>
-        private double CalcularPrima(double ValorBase)
+        public double CalcularPrima(double ValorBase)
         {
             double prima = 0;
             //Revisa entre que rangos esta la edad del cliente

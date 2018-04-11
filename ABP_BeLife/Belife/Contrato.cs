@@ -6,7 +6,7 @@ namespace Belife
 {
     public class Contrato
     {
-        public int NumContrato { get; set; }
+        public long NumContrato { get; set; }
         public DateTime Creacion { get; set; }
         public DateTime Termino { get; set; }
         public Cliente Titular { get; set; }
