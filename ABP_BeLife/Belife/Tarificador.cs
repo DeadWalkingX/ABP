@@ -20,6 +20,7 @@ namespace Belife
 
         }
 
+
         
         /// <summary>
         /// Se calcula la "prima" del cliente a partir de la edad,sexo y estado civil 
