@@ -19,6 +19,12 @@ namespace Belife
         public int PrimaAnual { get; set; }
         public int PrimaMensual { get; set; }
         public string Obsevaciones { get; set; }
+        
+        
+        public Contrato()
+        {
+            Init()
+        }
 
         public void Create()
         {
