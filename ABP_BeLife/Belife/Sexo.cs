@@ -12,7 +12,7 @@ namespace Belife
         public string Descripcion { get; set; }
 
 
-        
+
 
 
         public Sexo()
@@ -26,12 +26,14 @@ namespace Belife
             this.Descripcion = string.Empty;
 
         }
-      public void Read()
+        public void Read()
         {
 
         }
 
         public void ReadAll()
         {
+
+        }
     }
 }

@@ -35,31 +35,33 @@ namespace Belife
         }
 
         //se utiliza con registro cliente
-        //todos los datos son obligatorios
-        public Boolean Create(Cliente cliente)
-        {
-            Boolean varRetorno = false;
-
-
-        }
+        //todos los datos son obligatorios        
       
       public bool AgregaCliente(Cliente cliente)
         {
             bool agrega = false;
-            using (BeLifeEntity bbdd = new BeLifeEntity())
+            try
             {
-                Entity.Cliente cli = new Entity.Cliente
+                using (BeLifeEntity bbdd = new BeLifeEntity())
                 {
-                    RutCliente = cliente.Rut,
-                    Nombres = cliente.Nombre,
-                    Apellidos = cliente.Apellidos,
-                    FechaNacimiento = cliente.FechaNacimiento,
-                    IdSexo = cliente.Sexo.ID,
-                    IdEstadoCivil = cliente.EstadoCivil.ID
-                };
-                bbdd.Cliente.Add(cli);
-                bbdd.SaveChanges();
-                agrega = true;
+                    Entity.Cliente cli = new Entity.Cliente
+                    {
+                        RutCliente = cliente.Rut,
+                        Nombres = cliente.Nombre,
+                        Apellidos = cliente.Apellidos,
+                        FechaNacimiento = cliente.FechaNacimiento,
+                        IdSexo = cliente.Sexo.ID,
+                        IdEstadoCivil = cliente.EstadoCivil.ID
+                    };
+                    bbdd.Cliente.Add(cli);
+                    bbdd.SaveChanges();
+                    agrega = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return agrega;
         }
@@ -67,14 +69,10 @@ namespace Belife
 
         public void Read()
         {
-            /*
-             * El cliente debe ser mayor de 18, esto se debe verificar en la interfaz.
-             * se envian los datos del cliente resivido a la bd
-             * en un try catch enviar información de retorno si datos son incorrectos
-             */
+           
 
 
-            return varRetorno;
+            
         }
 
 

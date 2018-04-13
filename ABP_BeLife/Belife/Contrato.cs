@@ -24,7 +24,12 @@ namespace Belife
         
         public Contrato()
         {
-            Init()
+            Init();
+        }
+
+        private void Init()
+        {
+            throw new NotImplementedException();
         }
 
         public bool Create(Contrato contrato)
