@@ -7,13 +7,10 @@ namespace Belife
     public class Tarificador
     {
         public Cliente Cliente { get; set; }
-
-
         public Tarificador()
         {
             Init();
         }
-
         private void Init()
         {
             this.Cliente = new Cliente();
@@ -21,20 +18,20 @@ namespace Belife
         }
 
 
-        
         /// <summary>
-        /// Se calcula la "prima" del cliente a partir de la edad,sexo y estado civil 
+        /// Calcula la prima anual del cliente
         /// </summary>
-        /// <param name="ValorBase"> Valor base del plan para obtener el valor total de la prima </param>
-        /// <returns> valor de la prima </returns>
-        public double CalcularPrima(double ValorBase)
+        /// <param name="PrimaBase"> Prima base obtenida desde plan </param>
+        /// <returns>Prima anual del cliente</returns>
+        public double CalcularPrima(int PrimaBase)
         {
             double prima = 0;
-            //Revisa entre que rangos esta la edad del cliente
-            if (CalcularEdadCliente()<26)
+            //Pregunta por el rango de edad del cliente para asignar valor de prima
+            if (this.Cliente.Edad() < 26)
             {
                 prima += 3.6;
-            }else if(CalcularEdadCliente()<46){
+            }else if(this.Cliente.Edad() < 46){
+
                 prima += 2.4;
             }
             else
@@ -42,44 +39,29 @@ namespace Belife
                 prima += 6;
             }
 
-            //Revisa el sexo del cliente 1="Masculino" 2="Femenino"
-            if(Cliente.Sexo.ID == 1)
+            //pregunta por el sexo del cliente para asignar valor de prima// 0 hombre -  1 mujer
+            if (this.Cliente.Sexo.ID == 0)
             {
-                prima += 2.4;
-            }else if(Cliente.Sexo.ID == 2){
-                prima += 1.2;
+                prima+=2.4;
             }
             else
             {
-                //Nose que dejar en el else.. si se les ocurre borren esto :D
-                prima += 0;
+                prima += 1.2;
             }
-
-            //Revisa el Estado Civil del Cliente 1="Soltero",2="Casado",3="Divorciado",4="Viudo"
-            if(Cliente.EstadoCivil.ID == 1)
+            //pregunta por el estado civil del cliente para asignar valor de prima
+            //0 Soltero, 1 Casado, 2 Viudo, 3 Divorciado
+            if(this.Cliente.EstadoCivil.ID == 0)
             {
                 prima += 4.8;
-            }else if (Cliente.EstadoCivil.ID == 2)
+            }else if(this.Cliente.EstadoCivil.ID == 1)
             {
                 prima += 2.4;
-            }else if (Cliente.EstadoCivil.ID == 3 || Cliente.EstadoCivil.ID==4)
+            }
+            else
             {
                 prima += 3.6;
             }
-            else
-            {
-                //Nose que dejar en el else.. si se les ocurre borren esto :D
-                prima += 0;
-            }
-
-
-            return prima+ValorBase;
-        }
-        //Retorna la edad del Cliente
-        private int CalcularEdadCliente()
-        {
-            
-            return DateTime.Today.AddTicks(-this.Cliente.FechaNacimiento.Ticks).Year-1;
+            return prima+PrimaBase;
 
         }
     }

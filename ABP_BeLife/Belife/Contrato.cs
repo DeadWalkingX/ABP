@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Belife.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace Belife
 {
     public class Contrato
     {
-        public long NumContrato { get; set; }
+        public int NumContrato { get; set; }
         public DateTime Creacion { get; set; }
         public DateTime Termino { get; set; }
         public Cliente Titular { get; set; }
@@ -26,9 +27,41 @@ namespace Belife
             Init()
         }
 
-        public void Create()
+        public bool Create(Contrato contrato)
         {
+            bool exito = false;
 
+            try
+            {
+                using (BeLifeEntity bbdd = new BeLifeEntity())
+                {
+                    Entity.Contrato cont = new Entity.Contrato();
+                    cont.Numero = ""+contrato.NumContrato;
+                    cont.RutCliente = contrato.Titular.Rut;
+                    cont.FechaCreacion = contrato.Creacion;
+                    cont.CodigoPlan = ""+contrato.PlanAsociado.ID;
+                    cont.FechaInicioVigencia = contrato.IniVigencia;
+                    cont.FechaFinVigencia = contrato.FinVigencia;
+                    cont.Vigente = contrato.EstaVigente;
+                    cont.DeclaracionSalud = contrato.ConDeclaracionDeSalud;
+                    cont.PrimaAnual = contrato.PrimaAnual;
+                    cont.PrimaMensual = contrato.PrimaMensual;
+                    cont.Observaciones = contrato.Obsevaciones;
+
+                    bbdd.Contrato.Add(cont);
+                    bbdd.SaveChanges();
+                    exito = true;
+                    
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return exito;
         }
         public void Read()
         {

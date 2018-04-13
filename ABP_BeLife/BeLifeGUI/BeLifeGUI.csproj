@@ -133,9 +133,9 @@
     <Resource Include="Imagenes\ClientUpdate.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Belife\Belife.csproj">
+    <ProjectReference Include="..\Belife\BeLife.Negocios.csproj">
       <Project>{94066470-44f4-4e6c-9cad-e143dff3f7c4}</Project>
-      <Name>Belife</Name>
+      <Name>BeLife.Negocios</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

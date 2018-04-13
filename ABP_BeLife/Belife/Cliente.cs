@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Belife.Entity;
+using System;
 
 namespace Belife
-{   
-    
+{
+
     public class Cliente
     {
 
@@ -32,6 +31,7 @@ namespace Belife
             this.FechaNacimiento = DateTime.Now;
             this.Sexo = new Sexo();
             this.EstadoCivil = new EstadoCivil();
+
         }
 
         //se utiliza con registro cliente
@@ -40,11 +40,39 @@ namespace Belife
         {
             Boolean varRetorno = false;
 
+
+        }
+      
+      public bool AgregaCliente(Cliente cliente)
+        {
+            bool agrega = false;
+            using (BeLifeEntity bbdd = new BeLifeEntity())
+            {
+                Entity.Cliente cli = new Entity.Cliente
+                {
+                    RutCliente = cliente.Rut,
+                    Nombres = cliente.Nombre,
+                    Apellidos = cliente.Apellidos,
+                    FechaNacimiento = cliente.FechaNacimiento,
+                    IdSexo = cliente.Sexo.ID,
+                    IdEstadoCivil = cliente.EstadoCivil.ID
+                };
+                bbdd.Cliente.Add(cli);
+                bbdd.SaveChanges();
+                agrega = true;
+            }
+            return agrega;
+        }
+        
+
+        public void Read()
+        {
             /*
              * El cliente debe ser mayor de 18, esto se debe verificar en la interfaz.
              * se envian los datos del cliente resivido a la bd
              * en un try catch enviar información de retorno si datos son incorrectos
              */
+
 
             return varRetorno;
         }
@@ -105,6 +133,11 @@ namespace Belife
             //al presionar el boton Buscar se ejecutara este metodo (si es que se a seleccionado un estadoCivil)
             //verificar si se a seleccionado un sexo para ejecutar el metodo "LeerPorSexo" aqui.
             return clientes;
+        }
+
+        public int Edad()
+        {
+            return DateTime.Today.AddTicks(-this.FechaNacimiento.Ticks).Year - 1;
         }
 
     }

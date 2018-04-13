@@ -9,6 +9,9 @@ namespace Belife
         public int ID { get; set; }
         public string Descripcion { get; set; }
 
+
+       
+
         public EstadoCivil()
         {
             Init();
@@ -19,6 +22,16 @@ namespace Belife
             this.ID = 0;
             this.Descripcion = string.Empty;
         }
+       public void Read()
+        {
+
+        }
+
+        public void ReadAll()
+        {
+
+        }
+
 
     }
 }
