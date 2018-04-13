@@ -35,5 +35,11 @@ namespace BeLifeGUI
             Contratos ventanaContratos = new Contratos();
             ventanaContratos.Show();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            RegistroClientes registroClientes = new RegistroClientes();
+            registroClientes.Show();
+        }
     }
 }

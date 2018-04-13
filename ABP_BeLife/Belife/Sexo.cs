@@ -20,6 +20,22 @@ namespace Belife
             Init();
         }
 
+        public Sexo(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    Descripcion = "Masculino";
+                    break;
+                case 1:
+                    Descripcion = "Femenino";
+                    break;
+                default:
+                    break;
+
+            }
+        }
+
         private void Init()
         {
             this.ID = 0;

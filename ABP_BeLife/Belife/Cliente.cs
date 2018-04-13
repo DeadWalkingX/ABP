@@ -17,10 +17,24 @@ namespace Belife
 
 
 
-        //Constructor
+        //Constructores
+
+        //Constructor vacio
         public Cliente()
         {
             Init();
+        }
+        //Constructor con todos los parametros
+        public Cliente(string _rut,string _nombres,string _apellidos,
+            DateTime _fechaNacimiento,Sexo _sexo,EstadoCivil _estadoCivil)
+        {
+            Rut = _rut;
+            Nombre = _nombres;
+            Apellidos = _apellidos;
+            FechaNacimiento = _fechaNacimiento;
+            Sexo = _sexo;
+            EstadoCivil = _estadoCivil;
+
         }
 
         private void Init()
@@ -40,29 +54,24 @@ namespace Belife
       public bool AgregaCliente(Cliente cliente)
         {
             bool agrega = false;
-            try
-            {
-                using (BeLifeEntity bbdd = new BeLifeEntity())
+           
+                BeLifeEntity bbdd = new BeLifeEntity();
+                
+                Entity.Cliente cli = new Entity.Cliente
                 {
-                    Entity.Cliente cli = new Entity.Cliente
-                    {
-                        RutCliente = cliente.Rut,
-                        Nombres = cliente.Nombre,
-                        Apellidos = cliente.Apellidos,
-                        FechaNacimiento = cliente.FechaNacimiento,
-                        IdSexo = cliente.Sexo.ID,
-                        IdEstadoCivil = cliente.EstadoCivil.ID
-                    };
-                    bbdd.Cliente.Add(cli);
-                    bbdd.SaveChanges();
-                    agrega = true;
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+                    RutCliente = cliente.Rut,
+                    Nombres = cliente.Nombre,
+                    Apellidos = cliente.Apellidos,
+                    FechaNacimiento = cliente.FechaNacimiento,
+                    IdSexo = cliente.Sexo.ID,
+                    IdEstadoCivil = cliente.EstadoCivil.ID
+                };
+                bbdd.Cliente.Add(cli);
+                bbdd.SaveChanges();
+                agrega = true;
+                
+            
+            
             return agrega;
         }
         
@@ -114,6 +123,31 @@ namespace Belife
         {
             ClienteCollection clientes = new ClienteCollection();
             //al presionar el boton "ListarTodos" se debe ejecutar este metodo
+            Cliente cliente;
+
+            BeLifeEntity bbdd = new BeLifeEntity();
+            try
+            {
+                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes"))
+                {
+                    cliente = new Cliente(
+                        cli.RutCliente,
+                        cli.Nombres,
+                        cli.Apellidos,
+                        cli.FechaNacimiento,
+                        new Sexo(cli.IdSexo),
+                        new EstadoCivil(cli.IdEstadoCivil));
+                    clientes.Add(cliente);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
             return clientes;
         }
         //se utiliza con listado clientes
@@ -122,6 +156,30 @@ namespace Belife
             ClienteCollection clientes = new ClienteCollection();
             //al presionar el boton Buscar se ejecutara este metodo (si es que se a seleccionado un sexo)
             //verificar si se a seleccionado un estado civil para ejecutar el metodo "LeerPorEstadoCivil" aqui.
+
+            Cliente cliente;
+
+            BeLifeEntity bbdd = new BeLifeEntity();
+            try
+            {
+                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes where IDSEXO ="+sexo.ID))
+                {
+                    cliente = new Cliente(
+                        cli.RutCliente,
+                        cli.Nombres,
+                        cli.Apellidos,
+                        cli.FechaNacimiento,
+                        new Sexo(cli.IdSexo),
+                        new EstadoCivil(cli.IdEstadoCivil));
+                    clientes.Add(cliente);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return clientes;
         }
         //se utiliza con listado clientes
@@ -130,6 +188,29 @@ namespace Belife
             ClienteCollection clientes = new ClienteCollection();
             //al presionar el boton Buscar se ejecutara este metodo (si es que se a seleccionado un estadoCivil)
             //verificar si se a seleccionado un sexo para ejecutar el metodo "LeerPorSexo" aqui.
+            Cliente cliente;
+
+            BeLifeEntity bbdd = new BeLifeEntity();
+            try
+            {
+                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes where IDESTADOCIVIL ="+estadoCivil.ID))
+                {
+                    cliente = new Cliente(
+                        cli.RutCliente,
+                        cli.Nombres,
+                        cli.Apellidos,
+                        cli.FechaNacimiento,
+                        new Sexo(cli.IdSexo),
+                        new EstadoCivil(cli.IdEstadoCivil));
+                    clientes.Add(cliente);
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return clientes;
         }
 

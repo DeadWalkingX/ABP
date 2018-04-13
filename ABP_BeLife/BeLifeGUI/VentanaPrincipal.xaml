@@ -27,7 +27,7 @@
                 </Separator>
                 <Button Content="Contrato Vida" HorizontalAlignment="Left" Margin="234,101,0,0" VerticalAlignment="Top" Width="175" Click="Button_Click_1"/>
                 <Button Content="Listado de contratos" HorizontalAlignment="Left" Margin="234,128,0,0" VerticalAlignment="Top" Width="175" Click="Button_Click"/>
-                <Button Content="Registro clientes" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="175"/>
+                <Button Content="Registro clientes" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="175" Click="Button_Click_2"/>
                 <Button Content="Listado de clientes" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top" Width="175"/>
             </Grid>
         </Border>

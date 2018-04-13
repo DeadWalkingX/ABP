@@ -7,8 +7,10 @@ namespace Belife.Entity
 
     public partial class BeLifeEntity : DbContext
     {
+        private const string NameOrConnectionString = "name=BeLifeEntity";
+
         public BeLifeEntity()
-            : base("name=BeLifeEntity")
+            : base(NameOrConnectionString)
         {
         }
 

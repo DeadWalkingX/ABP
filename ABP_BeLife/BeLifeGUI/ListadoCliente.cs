@@ -18,9 +18,9 @@ namespace BeLifeGUI
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class RegistrarCliente : Window
+    public partial class ListadoCliente : Window
     {
-        public RegistrarCliente()
+        public ListadoCliente()
         {
             InitializeComponent();
         }

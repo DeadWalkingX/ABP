@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BeLifeEntity.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Contrato.cs" />
     <Compile Include="EstadoCivil.cs" />

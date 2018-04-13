@@ -80,7 +80,9 @@ namespace BeLifeGUI
             //TODO: Actualizar en caso de actualización de librería
             Tarificador tar = new Tarificador();
             tar.Cliente = _clienteCargado;
-            int resultado = (int)Math.Round(tar.CalcularPrima());
+            int a = 0;
+            //hay que modificar esto
+            int resultado = (int)Math.Round(tar.CalcularPrima(a));
             return resultado;
         }
 
@@ -157,7 +159,7 @@ namespace BeLifeGUI
                 return;
             }
             long numeroContrato = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss"));
-            contrato.NumContrato = numeroContrato;
+            contrato.NumContrato = (int)numeroContrato;
             MessageBox.Show("Estos son los datos: Numero contrato = " + numeroContrato);
         }
 

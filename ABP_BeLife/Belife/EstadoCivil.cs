@@ -16,6 +16,26 @@ namespace Belife
         {
             Init();
         }
+        public EstadoCivil(int id)
+        {
+            switch (id)
+            {
+                case 0:
+                    Descripcion = "Soltero";
+                    break;
+                case 1:
+                    Descripcion = "Casado";
+                    break;
+                case 2:
+                    Descripcion = "Divorciado";
+                    break;
+                case 3:
+                    Descripcion = "Viudo";
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private void Init()
         {
