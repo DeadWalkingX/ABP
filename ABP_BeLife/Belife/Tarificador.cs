@@ -17,6 +17,7 @@ namespace Belife
 
         }
 
+
         /// <summary>
         /// Calcula la prima anual del cliente
         /// </summary>
@@ -30,12 +31,14 @@ namespace Belife
             {
                 prima += 3.6;
             }else if(this.Cliente.Edad() < 46){
+
                 prima += 2.4;
             }
             else
             {
                 prima += 6;
             }
+
             //pregunta por el sexo del cliente para asignar valor de prima// 0 hombre -  1 mujer
             if (this.Cliente.Sexo.ID == 0)
             {
@@ -58,7 +61,8 @@ namespace Belife
             {
                 prima += 3.6;
             }
-            return prima;
+            return prima+PrimaBase;
+
         }
     }
 }
