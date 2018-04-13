@@ -8,4 +8,12 @@
     <Win32Resource />
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Belife.Entity\Belife.Entity.csproj" />
+  </ItemGroup>
+
 </Project>

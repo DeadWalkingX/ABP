@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belife", "Belife\Belife.csproj", "{94066470-44F4-4E6C-9CAD-E143DFF3F7C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeLife.Negocios", "Belife\BeLife.Negocios.csproj", "{94066470-44F4-4E6C-9CAD-E143DFF3F7C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeLifeGUI", "BeLifeGUI\BeLifeGUI.csproj", "{AA4C073E-EBAD-48D8-8D96-866661B221D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belife.Entity", "Belife.Entity\Belife.Entity.csproj", "{B84B0CF1-A93B-4311-8C11-45A3025F0D04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AA4C073E-EBAD-48D8-8D96-866661B221D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA4C073E-EBAD-48D8-8D96-866661B221D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA4C073E-EBAD-48D8-8D96-866661B221D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84B0CF1-A93B-4311-8C11-45A3025F0D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84B0CF1-A93B-4311-8C11-45A3025F0D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84B0CF1-A93B-4311-8C11-45A3025F0D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84B0CF1-A93B-4311-8C11-45A3025F0D04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

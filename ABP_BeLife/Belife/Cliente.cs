@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Belife.Entity;
+using System;
 
 namespace Belife
-{   
-    
+{
+
     public class Cliente
     {
 
@@ -13,8 +12,8 @@ namespace Belife
         public string Rut { get; set; }
         public string Apellidos { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public eeSexo Sexo { get; set; }
-        public eeEstadoCivil EstadoCivil { get; set; }
+        public Sexo Sexo { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
 
 
 
@@ -30,14 +29,35 @@ namespace Belife
             this.Rut = string.Empty;
             this.Apellidos = string.Empty;
             this.FechaNacimiento = DateTime.Now;
-            this.Sexo = (eeSexo)0;
-            this.EstadoCivil = (eeEstadoCivil)0;
+            this.Sexo = new Sexo(); ;
+            this.EstadoCivil = new EstadoCivil(); ;
         }
 
         public void Create()
         {
 
         }
+        public bool AgregaCliente(Cliente cliente)
+        {
+            bool agrega = false;
+            using (BeLifeEntity bbdd = new BeLifeEntity())
+            {
+                Entity.Cliente cli = new Entity.Cliente
+                {
+                    RutCliente = cliente.Rut,
+                    Nombres = cliente.Nombre,
+                    Apellidos = cliente.Apellidos,
+                    FechaNacimiento = cliente.FechaNacimiento,
+                    IdSexo = cliente.Sexo.ID,
+                    IdEstadoCivil = cliente.EstadoCivil.ID
+                };
+                bbdd.Cliente.Add(cli);
+                bbdd.SaveChanges();
+                agrega = true;
+            }
+            return agrega;
+        }
+
         public void Read()
         {
 
@@ -61,6 +81,11 @@ namespace Belife
         public void LeerPorEstadoCivil()
         {
 
+        }
+
+        public int Edad()
+        {
+            return DateTime.Today.AddTicks(-this.FechaNacimiento.Ticks).Year - 1;
         }
 
     }
