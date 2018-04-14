@@ -1,5 +1,6 @@
 ﻿using Belife.Entity;
 using System;
+using System.Linq;
 
 namespace Belife
 {
@@ -51,44 +52,70 @@ namespace Belife
         //se utiliza con registro cliente
         //todos los datos son obligatorios        
       
-      public bool AgregaCliente(Cliente cliente)
+      public bool AgregaCliente()
         {
             bool agrega = false;
-           
-                BeLifeEntity bbdd = new BeLifeEntity();
-                
+            BeLifeEntity bbdd = new BeLifeEntity();
+            try
+            {
                 Entity.Cliente cli = new Entity.Cliente
                 {
-                    RutCliente = cliente.Rut,
-                    Nombres = cliente.Nombre,
-                    Apellidos = cliente.Apellidos,
-                    FechaNacimiento = cliente.FechaNacimiento,
-                    IdSexo = cliente.Sexo.ID,
-                    IdEstadoCivil = cliente.EstadoCivil.ID
+                    RutCliente = Rut,
+                    Nombres = Nombre,
+                    Apellidos = Apellidos,
+                    FechaNacimiento = FechaNacimiento,
+                    IdSexo = Sexo.ID,
+                    IdEstadoCivil = EstadoCivil.ID
                 };
                 bbdd.Cliente.Add(cli);
                 bbdd.SaveChanges();
                 agrega = true;
-                
-            
-            
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+                       
             return agrega;
         }
         
-
-        public void Read()
+        /// <summary>
+        /// Metodo buscar cliente por RUT
+        /// </summary>
+        /// <param name="_rut"></param>
+        /// <returns> Si es que el cliente fue o no encontrado</returns>
+        public bool Read(string _rut)
         {
-           
+            bool exito = false;
+            BeLifeEntity bbdd = new BeLifeEntity();
 
+            //Consulta si hay algun cliente con el parametro _rut en la base de datos
+            var query = from cli in bbdd.Cliente
+                        where cli.RutCliente == _rut
+                        select cli;
+            //cuenta si la query tiene mas de 0 filas y agrega los datos al cliente
+            if (query.Count() > 0)
+            {
+                Rut = query.First().RutCliente;
+                Nombre = query.First().Nombres;
+                Apellidos = query.First().Apellidos;
+                FechaNacimiento = query.First().FechaNacimiento;
+                Sexo = new Sexo(query.First().IdSexo);
+                EstadoCivil = new EstadoCivil(query.First().IdEstadoCivil);
+                exito = true;
+            }
 
-            
+            return exito;
         }
 
 
 
 
         //se utiliza conregistro cliente
-        public Boolean Update(Cliente cliente)
+        
+        public Boolean Update()
         {
             Boolean varRetorno = false;
             /*
@@ -96,28 +123,51 @@ namespace Belife
              * El cliente debe ser mayor de 18, esto se debe verificar en la interfaz.
              * update resto de datos del cliente, si no existe notificar
              */
+            BeLifeEntity bbdd = new BeLifeEntity();
+            //se realiza la consulta a la db
+            var query = from cli in bbdd.Cliente
+                        where cli.RutCliente == Rut
+                        select cli;
+            //se pregunta si la consulta tiene alguna fila
+            if (query.Count()>0)
+            {
+                //se cambia los valores del cliente en la db por los del cliente de interfaz
+                query.First().Nombres = Nombre;
+                query.First().Apellidos = Apellidos;
+                query.First().FechaNacimiento = FechaNacimiento;
+                query.First().IdSexo = Sexo.ID;
+                query.First().IdEstadoCivil = EstadoCivil.ID;
+                //se guardan los cambios
+                bbdd.SaveChanges();
+                varRetorno = true;
+            }
+
+
+
+
             return varRetorno;
         }
         //se utiliza con registro cliente
-        public Boolean Delete(string rut)
+        public Boolean Delete()
         {
             Boolean varRetorno = false;
             //verificar si rut existe en bd
             // no se puede eliminar un cliente que tenga contratos asociados, vigentes o no.
+            BeLifeEntity bbdd = new BeLifeEntity();
+            var query = from cli in bbdd.Cliente
+                        where cli.RutCliente == Rut
+                        select cli;
+            if (query.Count() > 0)
+            {
+                bbdd.Cliente.Remove(query.First());
+            }
+            bbdd.SaveChanges();
+
+
             return varRetorno;
         }
 
-        //se utiliza con listado clientes, registro cliente y ListadoContratos
-        public ClienteCollection Read(string rut)
-        {
-            ClienteCollection clientes = new ClienteCollection();
-            /*
-             *se verifica si el cliente existe en la bd.
-             * si existe se cargan los datos.
-             * de lo contrario se notifica (try catch).
-             */
-            return clientes;
-        }
+        
         //se utiliza con listado clientes
         public ClienteCollection LeerTodo()
         {
