@@ -1,16 +1,14 @@
-namespace Belife.Entity
+namespace BelifeBD
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class BeLifeEntity : DbContext
+    public partial class ModelBelife : DbContext
     {
-        private const string NameOrConnectionString = "name=BeLifeEntity";
-
-        public BeLifeEntity()
-            : base(NameOrConnectionString)
+        public ModelBelife()
+            : base("name=BelifeDB")
         {
         }
 

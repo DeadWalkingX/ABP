@@ -70,7 +70,7 @@ namespace BeLifeGUI
 
             try
             {
-                if (cli.AgregaCliente(cli))
+                if (cli.AgregaCliente())
                 {
                     MessageBox.Show("Cliente Agregado");
                     Limpiar();

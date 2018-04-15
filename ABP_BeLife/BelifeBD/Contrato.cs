@@ -1,4 +1,4 @@
-namespace Belife.Entity
+namespace BelifeBD
 {
     using System;
     using System.Collections.Generic;

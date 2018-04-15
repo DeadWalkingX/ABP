@@ -1,4 +1,4 @@
-﻿using Belife.Entity;
+﻿using BelifeBD;
 using System;
 using System.Linq;
 
@@ -55,10 +55,10 @@ namespace Belife
       public bool AgregaCliente()
         {
             bool agrega = false;
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             try
             {
-                Entity.Cliente cli = new Entity.Cliente
+                BelifeBD.Cliente cli = new BelifeBD.Cliente
                 {
                     RutCliente = Rut,
                     Nombres = Nombre,
@@ -68,7 +68,9 @@ namespace Belife
                     IdEstadoCivil = EstadoCivil.ID
                 };
                 bbdd.Cliente.Add(cli);
-                bbdd.SaveChanges();
+
+                
+               
                 agrega = true;
 
             }
@@ -89,7 +91,7 @@ namespace Belife
         public bool Read(string _rut)
         {
             bool exito = false;
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
 
             //Consulta si hay algun cliente con el parametro _rut en la base de datos
             var query = from cli in bbdd.Cliente
@@ -123,7 +125,7 @@ namespace Belife
              * El cliente debe ser mayor de 18, esto se debe verificar en la interfaz.
              * update resto de datos del cliente, si no existe notificar
              */
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             //se realiza la consulta a la db
             var query = from cli in bbdd.Cliente
                         where cli.RutCliente == Rut
@@ -153,7 +155,7 @@ namespace Belife
             Boolean varRetorno = false;
             //verificar si rut existe en bd
             // no se puede eliminar un cliente que tenga contratos asociados, vigentes o no.
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from cli in bbdd.Cliente
                         where cli.RutCliente == Rut
                         select cli;
@@ -175,10 +177,13 @@ namespace Belife
             //al presionar el boton "ListarTodos" se debe ejecutar este metodo
             Cliente cliente;
 
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
+
+            var query = from cli in bbdd.Cliente
+                        select cli;
             try
             {
-                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes"))
+                foreach (BelifeBD.Cliente cli in query)
                 {
                     cliente = new Cliente(
                         cli.RutCliente,
@@ -209,10 +214,13 @@ namespace Belife
 
             Cliente cliente;
 
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
+            var query = from cli in bbdd.Cliente
+                        where cli.IdSexo == sexo.ID
+                        select cli;
             try
             {
-                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes where IDSEXO ="+sexo.ID))
+                foreach ( BelifeBD.Cliente cli in query)
                 {
                     cliente = new Cliente(
                         cli.RutCliente,
@@ -240,10 +248,15 @@ namespace Belife
             //verificar si se a seleccionado un sexo para ejecutar el metodo "LeerPorSexo" aqui.
             Cliente cliente;
 
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
+            var query = from cli in bbdd.Cliente
+                        where cli.IdEstadoCivil == estadoCivil.ID
+                        select cli;
+
+
             try
             {
-                foreach (Belife.Entity.Cliente cli in bbdd.Cliente.SqlQuery("select * from clientes where IDESTADOCIVIL ="+estadoCivil.ID))
+                foreach (BelifeBD.Cliente cli in query)
                 {
                     cliente = new Cliente(
                         cli.RutCliente,

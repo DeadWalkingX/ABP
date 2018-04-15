@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Belife.Entity")]
+[assembly: AssemblyTitle("Belife.Biblio")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Belife.Entity")]
+[assembly: AssemblyProduct("Belife.Biblio")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("b84b0cf1-a93b-4311-8c11-45a3025f0d04")]
+[assembly: Guid("5c174449-fb6d-41fa-8e39-fffc64318b5a")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

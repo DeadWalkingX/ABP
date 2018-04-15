@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BeLifeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BeLifeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ListadoContratos.xaml.cs" />
     <Compile Include="ListadoCliente.cs" />
     <Compile Include="RegistroClientes.xaml.cs">
@@ -116,6 +121,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BeLifeDataSet.xsc">
+      <DependentUpon>BeLifeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BeLifeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BeLifeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BeLifeDataSet.xss">
+      <DependentUpon>BeLifeDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,9 +164,9 @@
     <Resource Include="Imagenes\ClientUpdate.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Belife\BeLife.Negocios.csproj">
-      <Project>{94066470-44f4-4e6c-9cad-e143dff3f7c4}</Project>
-      <Name>BeLife.Negocios</Name>
+    <ProjectReference Include="..\Belife.Biblio\BelifeNegocios.csproj">
+      <Project>{5c174449-fb6d-41fa-8e39-fffc64318b5a}</Project>
+      <Name>BelifeNegocios</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

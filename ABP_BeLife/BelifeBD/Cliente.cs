@@ -1,4 +1,4 @@
-namespace Belife.Entity
+namespace BelifeBD
 {
     using System;
     using System.Collections.Generic;
@@ -39,8 +39,5 @@ namespace Belife.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contrato> Contrato { get; set; }
-
-
-        
     }
 }

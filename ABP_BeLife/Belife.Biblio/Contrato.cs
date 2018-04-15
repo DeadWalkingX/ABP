@@ -1,4 +1,4 @@
-﻿using Belife.Entity;
+﻿using BelifeBD;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,9 +39,9 @@ namespace Belife
 
             try
             {
-                using (BeLifeEntity bbdd = new BeLifeEntity())
+                using (ModelBelife bbdd = new ModelBelife())
                 {
-                    Entity.Contrato cont = new Entity.Contrato();
+                    BelifeBD.Contrato cont = new BelifeBD.Contrato();
                     cont.Numero = ""+contrato.NumContrato;
                     cont.RutCliente = contrato.Titular.Rut;
                     cont.FechaCreacion = contrato.Creacion;
@@ -72,11 +72,11 @@ namespace Belife
         public bool Read()
         {
             bool exito = false;
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife  bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato
                         where con.Numero == NumContrato.ToString()
                         select con;
-            if(query.Count() > 0)
+            foreach(BelifeBD.Contrato var in query)
             {
                 Creacion = query.First().FechaCreacion;
                 //faltaran metodos para asignar cliente y plan
@@ -95,7 +95,7 @@ namespace Belife
         public bool Update()
         {
             bool exito = false;
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato
                         where con.Numero == NumContrato.ToString()
                         select con;
@@ -120,7 +120,7 @@ namespace Belife
         public bool Delete()
         {
             bool exito = false;
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato
                         where con.Numero == NumContrato.ToString()
                         select con;
@@ -136,10 +136,10 @@ namespace Belife
         public ContratoCollection LeerTodos()
         {
             ContratoCollection coll = new ContratoCollection();
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato                       
                         select con;
-            foreach (Entity.Contrato con in query)
+            foreach (BelifeBD.Contrato con in query)
             {
                 Contrato contrato = new Contrato();
                 contrato.NumContrato = Convert.ToInt64(con.Numero);
@@ -163,10 +163,10 @@ namespace Belife
         public ContratoCollection LeerNumContrato()
         {
             ContratoCollection coll = new ContratoCollection();
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato                       
                         select con;
-            foreach (Entity.Contrato con in query)
+            foreach (BelifeBD.Contrato con in query)
             {
                 Contrato contrato = new Contrato();
                 contrato.NumContrato = Convert.ToInt64(con.Numero);
@@ -190,11 +190,11 @@ namespace Belife
         public ContratoCollection LeerRut(string _rut)
         {
             ContratoCollection coll = new ContratoCollection();
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato
                         where con.RutCliente == _rut
                         select con;
-            foreach (Entity.Contrato con in query)
+            foreach (BelifeBD.Contrato con in query)
             {
                 Contrato contrato = new Contrato();
                 contrato.NumContrato = Convert.ToInt64(con.Numero);
@@ -202,7 +202,7 @@ namespace Belife
                 //faltan metodos para los dos casos
                 //contrato.Titular = con.RutCliente;
                 //contrato.PlanAsociado = con.CodigoPlan;
-                contrato.Poliza = con.;//hay que cambiar esto
+                //contrato.Poliza = con.;//hay que cambiar esto
                 contrato.IniVigencia = con.FechaInicioVigencia;
                 contrato.FinVigencia = con.FechaFinVigencia;
                 contrato.EstaVigente = con.Vigente;
@@ -214,16 +214,16 @@ namespace Belife
             }
             return coll;
         }
-        public void LeerPoliza(int _poliza)
+        public ContratoCollection LeerPoliza(int _poliza)
         {
             ContratoCollection coll = new ContratoCollection();
-            BeLifeEntity bbdd = new BeLifeEntity();
+            ModelBelife bbdd = new ModelBelife();
             var query = from con in bbdd.Contrato
                         //Aca falta meter la poliza pero Contrato
                         // No tiene atributo poliza
                         //HAY QUE ARREGLARLO    
                         select con;
-            foreach (Entity.Contrato con in query)
+            foreach (BelifeBD.Contrato con in query)
             {
                 Contrato contrato = new Contrato();
                 contrato.NumContrato = Convert.ToInt64(con.Numero);
