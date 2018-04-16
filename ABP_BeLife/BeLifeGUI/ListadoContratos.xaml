@@ -17,7 +17,7 @@
                     <Label Content="Nro. Contrato:" HorizontalAlignment="Left" Margin="8,83,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="101,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="101,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="filtrarRut" Margin="241,19,10,93">
+                    <Button x:Name="filtrarRut" Margin="241,19,10,93" Click="filtrarRut_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Height="17" Width="27" Source="Imagenes/DataSearch.png" Margin="1"/>
                             <TextBlock VerticalAlignment="Center" Text="Filtrar por RUT"/>

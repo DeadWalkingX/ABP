@@ -58,15 +58,17 @@ namespace BeLifeGUI
 
         }
 
-        private void btnRegistrar_Click(object sender, RoutedEventArgs e)
+        private void BtnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            Cliente cli = new Cliente();
-            cli.Rut = TxtRut.Text;
-            cli.Nombre = TxtNombres.Text;
-            cli.Apellidos = TxtNombres.Text;
-            cli.FechaNacimiento = (DateTime)DPFechaNacimiento.SelectedDate;
-            cli.Sexo = new Sexo(CbSexo.SelectedIndex);
-            cli.EstadoCivil = new EstadoCivil(CbEstadoCivil.SelectedIndex);
+            Cliente cli = new Cliente
+            {
+                Rut = TxtRut.Text,
+                Nombre = TxtNombres.Text,
+                Apellidos = TxtNombres.Text,
+                FechaNacimiento = (DateTime)DPFechaNacimiento.SelectedDate,
+                Sexo = new Sexo(CbSexo.SelectedIndex),
+                EstadoCivil = new EstadoCivil(CbEstadoCivil.SelectedIndex)
+            };
 
             try
             {
@@ -82,7 +84,6 @@ namespace BeLifeGUI
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
 

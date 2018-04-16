@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BeLifeDataSet.cs">
+      <DependentUpon>BeLifeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BeLifeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

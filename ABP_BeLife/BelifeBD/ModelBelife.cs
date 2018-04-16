@@ -10,6 +10,7 @@ namespace BelifeBD
         public ModelBelife()
             : base("name=BelifeDB")
         {
+            
         }
 
         public virtual DbSet<Cliente> Cliente { get; set; }

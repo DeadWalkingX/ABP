@@ -24,5 +24,10 @@ namespace BeLifeGUI
         {
             InitializeComponent();
         }
+
+        private void filtrarRut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -56,6 +56,8 @@ namespace Belife
         {
             bool agrega = false;
             ModelBelife bbdd = new ModelBelife();
+            BelifeConDB aa = new BelifeConDB();
+            
             try
             {
                 BelifeBD.Cliente cli = new BelifeBD.Cliente
@@ -65,16 +67,14 @@ namespace Belife
                     Apellidos = Apellidos,
                     FechaNacimiento = FechaNacimiento,
                     IdSexo = Sexo.ID,
-                    IdEstadoCivil = EstadoCivil.ID
+                    IdEstadoCivil = EstadoCivil.ID                    
                 };
-                bbdd.Cliente.Add(cli);
-
-                
-               
+                aa.Cliente.Add(cli);
+                aa.SaveChanges();
                 agrega = true;
 
             }
-            catch (Exception)
+            catch (Exception )
             {
 
                 throw;

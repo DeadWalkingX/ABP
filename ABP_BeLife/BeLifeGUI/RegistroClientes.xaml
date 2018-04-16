@@ -20,7 +20,7 @@
         <ComboBox x:Name="CbSexo" HorizontalAlignment="Left" Margin="474,115,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="CbEstadoCivil" HorizontalAlignment="Left" Margin="474,146,0,0" VerticalAlignment="Top" Width="120"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" Margin="44,80,0,0" VerticalAlignment="Top" Width="575"/>
-        <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="44,302,0,0" Click="btnRegistrar_Click"/>
+        <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="44,302,0,0" Click="BtnRegistrar_Click"/>
         <Button x:Name="btnActualizar" Content="Actualizar" HorizontalAlignment="Left" Margin="157,302,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="274,302,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="395,302,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
